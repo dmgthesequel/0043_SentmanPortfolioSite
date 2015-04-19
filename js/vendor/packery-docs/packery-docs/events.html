@@ -1,0 +1,353 @@
+<!doctype html>
+<!--[if lte IE 8]>     <html class="lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class=""> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width">
+  <meta name="description" content="The bin-packing layout library.">
+
+  <title>Packery &#xB7; Events</title>
+
+  <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,700,400italic" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/packery-docs.css" media="screen">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@metafizzyco">
+  <meta name="twitter:url" content="http://packery.metafizzy.co/events.html">
+  <meta name="twitter:title" content="Packery Events">
+  <meta name="twitter:description" content="The bin-packing layout library. Packery makes your crazy and clever layout a real thing. Be clever. Get crazy.">
+
+</head>
+<body class="events-page" data-page="events">
+
+  <div id="site-nav">
+    <h1><a href=".">Packery</a></h1>
+    <ol class="primary-content">
+      <li class="nav-options"><a href="options.html">Options</a></li>
+      <li class="nav-methods"><a href="methods.html">Methods</a></li>
+      <li class="nav-events"><a href="events.html">Events</a></li>
+      <li class="nav-draggable"><a href="draggable.html">Draggable</a></li>
+      <li class="nav-license"><a href="license.html">License</a></li>
+      <li class="nav-appendix"><a href="appendix.html">Appendix</a></li>
+      <li class="nav-faq"><a href="faq.html">FAQ</a></li>
+    </ol>
+  </div>
+
+
+  <div id="content">
+
+    <div class="primary-content">
+        <h1>Events</h1>
+
+      <ul id="page-nav">
+<li class="page-nav__item--h2"><a href="#dragitempositioned">dragItemPositioned</a></li>
+<li class="page-nav__item--h2"><a href="#fitcomplete">fitComplete</a></li>
+<li class="page-nav__item--h2"><a href="#layoutcomplete">layoutComplete</a></li>
+<li class="page-nav__item--h2"><a href="#removecomplete">removeComplete</a></li>
+</ul>
+    </div>
+
+
+<div id="notification"></div>
+
+<div class="primary-content">
+
+<p>Packery is an Event Emitter. You can bind listeners to events with the <a href="methods.html#on">on</a>, <a href="methods.html#off">off</a>, and <a href="methods.html#once">once</a> methods.</p>
+
+<pre><code class="js"><span class="keyword">var</span> $container = $(<span class="string">&apos;#container&apos;</span>).packery({...});
+
+<span class="function"><span class="keyword">function</span> <span class="title">onLayout</span><span class="params">()</span> </span>{
+  <span class="built_in">console</span>.log(<span class="string">&apos;layout done&apos;</span>);
+}
+<span class="comment">// bind event listener</span>
+$container.packery( <span class="string">&apos;on&apos;</span>, <span class="string">&apos;layoutComplete&apos;</span>, onLayout );
+<span class="comment">// un-bind event listener</span>
+$container.packery( <span class="string">&apos;off&apos;</span>, <span class="string">&apos;layoutComplete&apos;</span>, onLayout );
+<span class="comment">// bind event listener to be triggered just once</span>
+$container.packery( <span class="string">&apos;once&apos;</span>, <span class="string">&apos;layoutComplete&apos;</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>{
+  <span class="built_in">console</span>.log(<span class="string">&apos;layout done, just this one time&apos;</span>);
+});
+</code></pre>
+
+</div><div class="primary-content">
+
+<h2 id="dragitempositioned">dragItemPositioned</h2>
+
+<pre><code class="js">$container.packery( <span class="string">&apos;on&apos;</span>, <span class="string">&apos;dragItemPositioned&apos;</span>, <span class="function"><span class="keyword">function</span><span class="params">( draggedItem )</span> </span>{...} )
+<span class="comment">// or with vanilla JS</span>
+<span class="flickity_var">pckry</span>.on( <span class="string">&apos;dragItemPositioned&apos;</span>, <span class="function"><span class="keyword">function</span><span class="params">( draggedItem )</span> </span>{...} )
+</code></pre>
+
+<ul class="params">
+  <li class="param">
+    <h5 class="param-name param-bit"><code>draggedItem</code></h5>
+    <p class="type param-bit">
+      <b>Type:</b> <span class="value"><i>Packery.Item</i></span>
+    </p>
+    <p class="description param-bit">the dragged item that was positioned</p>
+  </li>
+</ul>
+
+<p>Triggered after a drag end, only when an item is positioned, either into a row or column, or into its container element. This event is triggered after the positioning transition has ended.</p>
+
+<div class="row example">
+  <div class="cell example-code">
+<pre><code class="js"><span class="comment">// set up Packery and Draggabillies</span>
+<span class="comment">// like the bindDraggabillyEvents demo, then...</span>
+$container.packery( <span class="string">&apos;on&apos;</span>, <span class="string">&apos;dragItemPositioned&apos;</span>,
+  <span class="function"><span class="keyword">function</span><span class="params">( draggedItem )</span> </span>{
+    notify( <span class="string">&apos;Packery positioned dragged &apos;</span> + draggedItem.element.nodeName );
+  }
+);
+</code></pre>
+  </div>
+  <div id="drag-item-positioned-demo" class="cell demo">
+    <div class="packery draggable">
+      <div class="item w4 h2"></div>
+      <div class="item w2 h2"></div>
+      <div class="item w2 h4"></div>
+      <div class="item w2 h2"></div>
+      <div class="item w4 h4"></div>
+      <div class="item w2 h2"></div>
+      <div class="item w2 h4"></div>
+      <div class="item w4 h4"></div>
+      <div class="item w2 h2"></div>
+      <div class="item w2 h2"></div>
+    </div>
+    <p class="edit"><a href="http://codepen.io/desandro/pen/wnyci">Edit this example on CodePen</a> or <a href="http://codepen.io/desandro/pen/zacdn">vanilla JS example</a></p>
+  </div>
+</div>
+
+</div><div class="primary-content">
+
+<h2 id="fitcomplete">fitComplete</h2>
+
+<pre><code class="js">$container.packery( <span class="string">&apos;on&apos;</span>, <span class="string">&apos;fitComplete&apos;</span>, <span class="function"><span class="keyword">function</span><span class="params">( item )</span> </span>{...} )
+<span class="comment">// or with vanilla JS</span>
+<span class="flickity_var">pckry</span>.on( <span class="string">&apos;fitComplete&apos;</span>, <span class="function"><span class="keyword">function</span><span class="params">( item )</span> </span>{...} )
+</code></pre>
+
+<ul class="params">
+  <li class="param">
+    <h5 class="param-name param-bit"><code>item</code></h5>
+    <p class="type param-bit">
+      <b>Type:</b> <span class="value"><i>Packery.Item</i></span>
+    </p>
+    <p class="description param-bit">items that was fit</p>
+  </li>
+</ul>
+
+<p>Triggered after an item element is <a href="methods.html#fit">fit</a>.</p>
+
+<div class="row example">
+  <div class="cell example-code">
+<pre><code class="js">$container.packery( <span class="string">&apos;on&apos;</span>, <span class="string">&apos;fitComplete&apos;</span>,
+  <span class="function"><span class="keyword">function</span><span class="params">( item )</span> </span>{
+    notify( <span class="string">&apos;fit &apos;</span> + item.element.className );
+  }
+);
+</code></pre>
+  </div>
+  <div id="fit-complete-demo" class="cell demo">
+    <p class="instruction">Click item to fit it at 40, 40</p>
+    <div class="packery clickable">
+      <div class="item"></div>
+      <div class="item h4"></div>
+      <div class="item w2"></div>
+      <div class="item"></div>
+      <div class="item h2"></div>
+      <div class="item w2 h2"></div>
+      <div class="item"></div>
+      <div class="item w4"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item h4"></div>
+      <div class="item w2"></div>
+      <div class="item"></div>
+      <div class="item h2"></div>
+      <div class="item w2 h2"></div>
+      <div class="item"></div>
+      <div class="item w4"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+    </div>
+  <p class="edit"><a href="http://codepen.io/desandro/pen/zydJr">Edit this example on CodePen</a> or <a href="http://codepen.io/desandro/pen/pqtvB">vanilla JS example</a></p>
+  </div>
+</div>
+
+</div><div class="primary-content">
+
+<h2 id="layoutcomplete">layoutComplete</h2>
+
+<pre><code class="js">$container.packery( <span class="string">&apos;on&apos;</span>, <span class="string">&apos;layoutComplete&apos;</span>, <span class="function"><span class="keyword">function</span><span class="params">( laidOutItems )</span> </span>{...} )
+<span class="comment">// or with vanilla JS</span>
+<span class="flickity_var">pckry</span>.on( <span class="string">&apos;layoutComplete&apos;</span>, <span class="function"><span class="keyword">function</span><span class="params">( laidOutItems )</span> </span>{...} )
+</code></pre>
+
+<ul class="params">
+  <li class="param">
+    <h5 class="param-name param-bit"><code>laidOutItems</code></h5>
+    <p class="type param-bit">
+      <b>Type:</b> <span class="value"><i>Array</i> of <i>Packery.Item</i>s</span>
+    </p>
+    <p class="description param-bit">items that were laid out</p>
+  </li>
+</ul>
+
+<p>Triggered after a layout and all positioning transitions have been completed.</p>
+
+<div class="row example">
+  <div class="cell example-code">
+<pre><code class="js">$container.packery( <span class="string">&apos;on&apos;</span>, <span class="string">&apos;layoutComplete&apos;</span>,
+  <span class="function"><span class="keyword">function</span><span class="params">( laidOutItems )</span> </span>{
+    <span class="built_in">console</span>.log(<span class="string">&apos;Packery layout completed on &apos;</span> +
+      laidOutItems.length + <span class="string">&apos; items&apos;</span>);
+  }
+);
+</code></pre>
+  </div>
+  <div id="layout-complete-demo" class="cell demo">
+    <p class="instruction">Resize browser or click item to toggle size</p>
+    <div class="packery clickable">
+      <div class="item"></div>
+      <div class="item h4"></div>
+      <div class="item w2"></div>
+      <div class="item"></div>
+      <div class="item h2"></div>
+      <div class="item w2 h2"></div>
+      <div class="item"></div>
+      <div class="item w4"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item h4"></div>
+      <div class="item w2"></div>
+      <div class="item"></div>
+      <div class="item h2"></div>
+      <div class="item w2 h2"></div>
+      <div class="item"></div>
+      <div class="item w4"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+    </div>
+    <p class="edit"><a href="http://codepen.io/desandro/pen/olKGA">Edit this example on CodePen</a> or <a href="http://codepen.io/desandro/pen/hdxge">vanilla JS example</a></p>
+  </div>
+</div>
+
+</div><div class="primary-content">
+
+<h2 id="removecomplete">removeComplete</h2>
+
+<pre><code class="js"><span class="flickity_var">pckry</span>.on( <span class="string">&apos;removeComplete&apos;</span>, <span class="function"><span class="keyword">function</span><span class="params">( removedItems )</span> </span>{...} )
+<span class="comment">// or with vanilla JS</span>
+$container.packery( <span class="string">&apos;on&apos;</span>, <span class="string">&apos;removeComplete&apos;</span>, <span class="function"><span class="keyword">function</span><span class="params">( removedItems )</span> </span>{...} )
+</code></pre>
+
+<p>Triggered after an item element has been removed.</p>
+
+<ul class="params">
+  <li class="param">
+    <h5 class="param-name param-bit"><code>removedItems</code></h5>
+    <p class="type param-bit">
+      <b>Type:</b> <span class="value"><i>Array</i> of <i>Packery.Item</i>s</span>
+    </p>
+    <p class="description param-bit">items that were removed</p>
+  </li>
+</ul>
+
+<div class="row example">
+  <div class="cell example-code">
+<pre><code class="js">$container.packery( <span class="string">&apos;on&apos;</span>, <span class="string">&apos;removeComplete&apos;</span>,
+  <span class="function"><span class="keyword">function</span><span class="params">( removedItems )</span> </span>{
+    <span class="built_in">console</span>.log( <span class="string">&apos;Removed &apos;</span> + removedItems.length + <span class="string">&apos; items&apos;</span> );
+  }
+);
+</code></pre>
+  </div>
+  <div id="remove-complete-demo" class="cell demo">
+    <p class="instruction">Click items to remove them</p>
+    <div class="packery clickable">
+      <div class="item"></div>
+      <div class="item h4"></div>
+      <div class="item w2"></div>
+      <div class="item"></div>
+      <div class="item h2"></div>
+      <div class="item w2 h2"></div>
+      <div class="item"></div>
+      <div class="item w4"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item h4"></div>
+      <div class="item w2"></div>
+      <div class="item"></div>
+      <div class="item h2"></div>
+      <div class="item w2 h2"></div>
+      <div class="item"></div>
+      <div class="item w4"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+    </div>
+    <p class="edit"><a href="http://codepen.io/desandro/pen/Czfpq">Edit this example on CodePen</a> or <a href="http://codepen.io/desandro/pen/JFCfb">vanilla JS example</a></p>
+  </div>
+</div>
+
+</div>
+
+  </div>
+
+  <div id="footer">
+    <div class="primary-content">
+      <p class="footer-copy">Also made by Metafizzy</p>
+
+      <div class="row other-products">
+        <div class="cell other-product">
+          <a href="http://isotope.metafizzy.co/">
+            <img src="http://i.imgur.com/xfGupRf.png" alt="Isotope">
+            <h3>Isotope</h3>
+            <p class="description">Filter &amp; sort magical layouts</p>
+          </a>
+        </div>
+
+        <div class="cell other-product">
+          <a href="http://flickity.metafizzy.co/">
+            <img src="http://i.imgur.com/8BFo4Aj.png" alt="Flickity">
+            <h3>Flickity</h3>
+            <p class="description">Touch, responsive, flickable&#xA0;galleries</p>
+          </a>
+        </div>
+      </div>
+
+      <p class="footer-copy">Follow <a href="https://twitter.com/metafizzyco">@metafizzyco on Twitter for Packery updates</a></p>
+    </div>
+
+    <div class="brand">
+      <a class="metafizzy-logo" href="http://metafizzy.co">M<span class="etafizzy">etafizzy</span></a>
+      <span class="copyright">&#xA9; 2013&#x2013;2015</span>
+    </div>
+
+  </div> 
+
+<!-- Packery does NOT require jQuery.  -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+     <!-- jQuery is only used for jQuery UI Draggable
+     and to demonstrate Packery as a jQuery plugin -->
+<script>window.jQuery || document.write('<script src="bower_components/jquery/jquery.js"><\/script>')</script>
+
+  <script src="js/packery-docs.min.js"></script>
+
+  <!-- Google Analytics - Remove this if you copy/pasted this page -->
+  <script>
+  (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+    function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+    e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+    e.src='//www.google-analytics.com/analytics.js';
+    r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+    ga('create','UA-58739927-4','auto');ga('send','pageview');
+  </script>
+
+</body>
+</html>
