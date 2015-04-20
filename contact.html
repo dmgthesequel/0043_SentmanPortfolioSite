@@ -3,21 +3,64 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>William Sentman Fine Artist</title>
+    <title>William Sentman Contact</title>
     <meta name="description" content="William Sentman Fine Art Oil Painting ">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/main.css">
-    <script src="js-dist/vendor-dist.js"></script>
+    <link rel="stylesheet" href="css/manifest.css" type="text/css" charset="utf-8">
+    <script src="js-dist/isotope.pkgd-dist.js"></script>
   </head>
   <body></body>
   <header>
-    <nav>
-      <ul>
+    <nav><a class="logo">
+        <p>logo</p></a>
+      <ul class="navlinks">
         <li> <a href="portfolio.html">portfolio</a></li>
         <li><a href="about.html">about the artist</a></li>
         <li><a href="contact.html">contact</a></li><br class="clear">
       </ul>
     </nav>
-    <h1>Contact Me!</h1>
   </header>
+  <div id="wufoo-mqo5ipd1id02lq"></div>
+  <script type="text/javascript">
+    var mqo5ipd1id02lq;
+    (function(d, t) {
+    var s = d.createElement(t), options = {
+    'userName':'dmgthesequel',
+    'formHash':'mqo5ipd1id02lq',
+    'autoResize':true,
+    'height':'440',
+    'async':true,
+    'host':'wufoo.com',
+    'header':'show',
+    'ssl':true};
+    s.src = ('https:' == d.location.protocol ? 'https://' : 'http://') + 'www.wufoo.com/scripts/embed/form.js';
+    s.onload = s.onreadystatechange = function() {
+    var rs = this.readyState; if (rs) if (rs != 'complete') if (rs != 'loaded') return;
+    try { mqo5ipd1id02lq = new WufooForm();mqo5ipd1id02lq.initialize(options);mqo5ipd1id02lq.display(); } catch (e) {}};
+    var scr = d.getElementsByTagName(t)[0], par = scr.parentNode; par.insertBefore(s, scr);
+    })(document, 'script');
+  </script>
+  <script>
+    	var $container = $('#container').isotope();
+    	$container.imagesLoaded( function() {
+    		$container.isotope({
+    			itemSelector: '.item',
+    			layoutMode: 'packery'
+    		});
+    	});
+    	$('#filters').on( 'click', 'button', function() {
+    		var filterValue = $(this).attr('data-filter');
+    		$container.isotope({ filter: filterValue });
+    	});
+    	$('.button-group').each( function( i, buttonGroup ) {
+    	var $buttonGroup = $( buttonGroup );
+    	$buttonGroup.on( 'click', 'button', function() {
+    	$buttonGroup.find('.is-checked').removeClass('is-checked');
+    	$( this ).addClass('is-checked');
+    	});
+    	});
+    	$(document).ready(function(){
+    		$(".link").colorbox({iframe:true, innerWidth:"80%", innerHeight:"60%"});
+    	});
+  </script>
 </html>

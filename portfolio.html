@@ -3,20 +3,47 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Sentman Portfolio</title>
+    <title>WIlliam Sentman Portfolio</title>
     <meta name="description" content="William Sentman Fine Art Oil Painting ">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/main.css">
-    <script src="js-dist/vendor-dist.js"></script>
+    <link rel="stylesheet" href="css/manifest.css" type="text/css" charset="utf-8">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="js-dist/isotope.pkgd-dist.js"></script>
   </head>
   <body></body>
   <header>
-    <nav>
-      <ul>
+    <nav><a class="logo">
+        <p>logo</p></a>
+      <ul class="navlinks">
         <li> <a href="portfolio.html">portfolio</a></li>
         <li><a href="about.html">about the artist</a></li>
         <li><a href="contact.html">contact</a></li><br class="clear">
       </ul>
-    </nav><a><img src="img/Head of Houdon.JPG"></a><a><img src="img/Little Gourd.jpg"></a><a><img src="img/Reflection.JPG"></a><a><img src="img/Upon His Throne.JPG"></a><a><img src="img/Upon His Throne II.JPG"></a><a><img src="img/Her Garden.JPG"></a><a><img src="#"></a><a><img src="img/Church Rooftops.jpg"></a><a><img src="img/Clusters.JPG"></a><a><img src="img/Coastline.JPG"></a><a><img src="img/Darby Creek.JPG"></a><a><img src="img/Darby Stream.jpg"></a><a><img src="img/Eagle Village Marshlands.jpg"></a><a><img src="img/Her Garden.JPG"></a><a><img src="img/Ocean rock bed.JPG"></a><a><img src="img/On The Rocks.jpg"></a><a><img src="img/Pipeline.JPG"></a><a><img src="img/rushing serenity.jpg"></a><a><img src="img/Stone Circle.JPG"></a><a><img src="img/The Amber Island.jpg"></a><a><img src="img/Twilight Bench.jpg"></a><a><img src="img/Windy Waterways.JPG"></a>
+    </nav>
   </header>
+  <div id="container"><a><img src="img/Head of Houdon_thumb.JPG"></a><a><img src="img/Little Gourd_thumb.jpg"></a><a><img src="img/Reflection_thumb.JPG"></a><a><img src="img/Upon His Throne_thumb.JPG"></a><a><img src="img/Upon His Throne II_thumb.JPG"></a><a><img src="img/Her Garden_thumb.JPG"></a><a><img src="img/Amhed Naji_thumb.JPG"></a><a><img src="img/Church Rooftops_thumb.jpg"></a><a><img src="img/Clusters_thumb.JPG"></a><a><img src="img/Coastline_thumb.JPG"></a><a><img src="img/Darby Creek_thumb.JPG"></a><a><img src="img/Darby Stream_thumb.jpg"></a><a><img src="img/Eagle Village Marshlands_thumb.jpg"></a><a><img src="img/Her Garden_thumb.JPG"></a><a><img src="img/Ocean rock bed_thumb.JPG"></a><a><img src="img/On The Rocks_thumb.jpg"></a><a><img src="img/Pipeline_thumb.JPG"></a><a><img src="img/rushing serenity_thumb.jpg"></a><a><img src="img/Stone Circle_thumb.JPG"></a><a><img src="img/The Amber Island_thumb.jpg"></a><a><img src="img/Twilight Bench_thumb.jpg"></a><a><img src="img/Windy Waterways_thumb.JPG"></a></div>
+  <script>
+    	var $container = $('#container').isotope();
+    	$container.imagesLoaded( function() {
+    		$container({
+    			itemSelector: '.item',
+        layoutMode: 'Packery',
+        gutter: 10
+    		});
+    	});
+    	$('#filters').on( 'click', 'button', function() {
+    		var filterValue = $(this).attr('data-filter');
+    		$container.isotope({ filter: filterValue });
+    	});
+    	$('.button-group').each( function( i, buttonGroup ) {
+    	var $buttonGroup = $( buttonGroup );
+    	$buttonGroup.on( 'click', 'button', function() {
+    	$buttonGroup.find('.is-checked').removeClass('is-checked');
+    	$( this ).addClass('is-checked');
+    	});
+    	});
+    	$(document).ready(function(){
+    		$(".link").colorbox({iframe:true, innerWidth:"80%", innerHeight:"60%"});
+    	});
+  </script>
 </html>

@@ -6,20 +6,48 @@
     <title>William Sentman Fine Artist</title>
     <meta name="description" content="William Sentman Fine Art Oil Painting ">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/main.css">
-    <script src="js-dist/vendor-dist.js"></script>
+    <link rel="stylesheet" href="css/manifest.css" type="text/css" charset="utf-8">
+    <script src="js-dist/isotope.pkgd-dist.js"></script>
   </head>
   <body></body>
   <header>
-    <nav>
-      <ul>
+    <nav><a class="logo">
+        <p>logo</p></a>
+      <ul class="navlinks">
         <li> <a href="portfolio.html">portfolio</a></li>
         <li><a href="about.html">about the artist</a></li>
         <li><a href="contact.html">contact</a></li><br class="clear">
       </ul>
     </nav>
-    <h1>William Sentman</h1>
-    <h2>Fine Artist</h2><a href="portfolio.html"> 
-      <p>Enter</p></a>
   </header>
+  <video autoplay loop poster="vid/vid_poster.png" id="bgvid">
+    <source src="vid/Sentman.webm" type="video/webm">
+    <source src="vid/Sentman.mp4" type="video/mp4">
+  </video>
+  <h1>William Sentman</h1>
+  <h2>Fine Artist</h2><a href="portfolio.html"> 
+    <p>Enter</p></a>
+  <script>
+    	var $container = $('#container').isotope();
+    	$container.imagesLoaded( function() {
+    		$container.isotope({
+    			itemSelector: '.item',
+    			layoutMode: 'packery'
+    		});
+    	});
+    	$('#filters').on( 'click', 'button', function() {
+    		var filterValue = $(this).attr('data-filter');
+    		$container.isotope({ filter: filterValue });
+    	});
+    	$('.button-group').each( function( i, buttonGroup ) {
+    	var $buttonGroup = $( buttonGroup );
+    	$buttonGroup.on( 'click', 'button', function() {
+    	$buttonGroup.find('.is-checked').removeClass('is-checked');
+    	$( this ).addClass('is-checked');
+    	});
+    	});
+    	$(document).ready(function(){
+    		$(".link").colorbox({iframe:true, innerWidth:"80%", innerHeight:"60%"});
+    	});
+  </script>
 </html>

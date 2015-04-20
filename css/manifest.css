@@ -1,0 +1,48 @@
+/* line 1, /Users/davidgolas/Sites/0043 SentmanStudios-Web Design/0043_SentmanPortfolioSite/sass/manifest.sass */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+/* line 11, /Users/davidgolas/Sites/0043 SentmanStudios-Web Design/0043_SentmanPortfolioSite/sass/manifest.sass */
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  color: white;
+  text-align: center; }
+
+/* line 17, /Users/davidgolas/Sites/0043 SentmanStudios-Web Design/0043_SentmanPortfolioSite/sass/manifest.sass */
+.clear {
+  clear: both; }
+
+@font-face {
+  font-family: 'paulmaulregular';
+  src: url(fonts/!PaulMaul-webfont.eot);
+  src: url(fonts/!PaulMaul-webfont.eot?#iefix) format('embedded-opentype'), url(fonts/!PaulMaul-webfont.woff) format('woff'), url(fonts/!PaulMaul-webfont.ttf) format('truetype'), url(fonts/!PaulMaul-webfont.svg#paulmaulregular) format('svg');
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'paulmaulbold';
+  src: url(fonts/!PaulMaul-b-webfont.eot);
+  src: url(fonts/!PaulMaul-b-webfont.eot?#iefix) format('embedded-opentype'), url(fonts/!PaulMaul-b-webfont.woff) format('woff'), url(fonts/!PaulMaul-b-webfont.ttf) format('truetype'), url(fonts/!PaulMaul-b-webfont.svg#paulmaulbold) format('svg');
+  font-weight: normal;
+  font-style: normal; }
+
+/* line 13, /Users/davidgolas/Sites/0043 SentmanStudios-Web Design/0043_SentmanPortfolioSite/sass/partials/_fonts */
+h1 {
+  font-family: 'paulmaulregular', Helvetica, Arial, sans-serif; }
+
+/* line 1, /Users/davidgolas/Sites/0043 SentmanStudios-Web Design/0043_SentmanPortfolioSite/sass/partials/_video */
+video#bgvid {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100;
+  background: url(vid/vid_poster.png) no-repeat;
+  background-size: cover; }
+/*# sourceMappingURL=manifest.css.map */
