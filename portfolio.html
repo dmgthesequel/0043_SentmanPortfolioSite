@@ -6,29 +6,27 @@
     <title>WIlliam Sentman Portfolio</title>
     <meta name="description" content="William Sentman Fine Art Oil Painting ">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/manifest.css" type="text/css" charset="utf-8">
+    <link rel="stylesheet" href="css/manifest.css" type="text/css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="js-dist/isotope.pkgd-dist.js"></script>
+    <script src="js-dist/imagesloaded.pkgd-dist.js"></script>
   </head>
   <body></body>
   <header>
-    <nav><a class="logo">
-        <p>logo</p></a>
+    <nav><a href="index.html" class="logo">William Sentman</a>
       <ul class="navlinks">
         <li> <a href="portfolio.html">portfolio</a></li>
         <li><a href="about.html">about the artist</a></li>
-        <li><a href="contact.html">contact</a></li><br class="clear">
-      </ul>
+        <li><a href="contact.html">contact</a></li>
+      </ul><br class="clear">
     </nav>
   </header>
-  <div id="container"><a><img src="img/Head of Houdon_thumb.JPG"></a><a><img src="img/Little Gourd_thumb.jpg"></a><a><img src="img/Reflection_thumb.JPG"></a><a><img src="img/Upon His Throne_thumb.JPG"></a><a><img src="img/Upon His Throne II_thumb.JPG"></a><a><img src="img/Her Garden_thumb.JPG"></a><a><img src="img/Amhed Naji_thumb.JPG"></a><a><img src="img/Church Rooftops_thumb.jpg"></a><a><img src="img/Clusters_thumb.JPG"></a><a><img src="img/Coastline_thumb.JPG"></a><a><img src="img/Darby Creek_thumb.JPG"></a><a><img src="img/Darby Stream_thumb.jpg"></a><a><img src="img/Eagle Village Marshlands_thumb.jpg"></a><a><img src="img/Her Garden_thumb.JPG"></a><a><img src="img/Ocean rock bed_thumb.JPG"></a><a><img src="img/On The Rocks_thumb.jpg"></a><a><img src="img/Pipeline_thumb.JPG"></a><a><img src="img/rushing serenity_thumb.jpg"></a><a><img src="img/Stone Circle_thumb.JPG"></a><a><img src="img/The Amber Island_thumb.jpg"></a><a><img src="img/Twilight Bench_thumb.jpg"></a><a><img src="img/Windy Waterways_thumb.JPG"></a></div>
+  <div id="container"><a class="item"><img src="img/Head of Houdon_thumb.JPG"></a><a class="item"><img src="img/Little Gourd_thumb.jpg"></a><a class="item"><img src="img/Reflection_thumb.JPG"></a><a class="item"><img src="img/Upon His Throne_thumb.JPG"></a><a class="item"><img src="img/Upon His Throne II_thumb.JPG"></a><a class="item"><img src="img/Her Garden_thumb.JPG"></a><a class="item"><img src="img/Amhed Naji_thumb.JPG"></a><a class="item"><img src="img/The Redhead_960.jpg"></a><a class="item"><img src="img/Church Rooftops_thumb.jpg"></a><a class="item"><img src="img/Clusters_thumb.JPG"></a><a class="item"><img src="img/Coastline_thumb.JPG"></a><a class="item"><img src="img/Darby Creek_thumb.JPG"></a><a class="item"><img src="img/Darby Stream_thumb.jpg"></a><a class="item"><img src="img/Eagle Village Marshlands_thumb.jpg"></a><a class="item"><img src="img/Her Garden_thumb.JPG"></a><a class="item"><img src="img/Ocean rock bed_thumb.JPG"></a><a class="item"><img src="img/On The Rocks_thumb.jpg"></a><a class="item"><img src="img/Pipeline_thumb.JPG"></a><a class="item"><img src="img/rushing serenity_thumb.jpg"></a><a class="item"><img src="img/Stone Circle_thumb.JPG"></a><a class="item"><img src="img/The Amber Island_thumb.jpg"></a><a class="item"><img src="img/Twilight Bench_thumb.jpg"></a><a class="item"><img src="img/Windy Waterways_thumb.JPG"></a></div>
   <script>
-    	var $container = $('#container').isotope();
-    	$container.imagesLoaded( function() {
-    		$container({
-    			itemSelector: '.item',
-        layoutMode: 'Packery',
-        gutter: 10
+    	var $container = $('#container').imagesLoaded( function(){
+    	$container.isotope({
+    		 layoutMode: 'masonry',
+    		 itemSelector: '.item'
     		});
     	});
     	$('#filters').on( 'click', 'button', function() {
@@ -36,14 +34,11 @@
     		$container.isotope({ filter: filterValue });
     	});
     	$('.button-group').each( function( i, buttonGroup ) {
-    	var $buttonGroup = $( buttonGroup );
+    	  var $buttonGroup = $( buttonGroup );
     	$buttonGroup.on( 'click', 'button', function() {
-    	$buttonGroup.find('.is-checked').removeClass('is-checked');
+    	  $buttonGroup.find('.is-checked').removeClass('is-checked');
     	$( this ).addClass('is-checked');
     	});
-    	});
-    	$(document).ready(function(){
-    		$(".link").colorbox({iframe:true, innerWidth:"80%", innerHeight:"60%"});
     	});
   </script>
 </html>

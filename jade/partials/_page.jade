@@ -7,14 +7,14 @@ html(class="no-js" lang="")
       block title
     meta(name="description" content="William Sentman Fine Art Oil Painting ")
     meta(name="viewport" content="width=device-width, initial-scale=1")
-    link(rel="stylesheet" href="css/manifest.css" type="text/css" charset="utf-8")
+    link(rel="stylesheet" href="css/manifest.css" type="text/css")
     script(src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js")
     script(src="js-dist/isotope.pkgd-dist.js")
+    script(src="js-dist/imagesloaded.pkgd-dist.js")
   body
   header
     nav
-      a.logo
-          p logo
+      a(href='index.html' class='logo') William Sentman
       ul.navlinks
         li 
           a(href="portfolio.html") portfolio
@@ -22,16 +22,14 @@ html(class="no-js" lang="")
           a(href="about.html") about the artist
         li
           a(href="contact.html") contact
-        br.clear
+      br.clear
   block content
   
   script
-    |	var $container = $('#container').isotope();
-    |	$container.imagesLoaded( function() {
-    |		$container({
-    |			itemSelector: '.item',
-    |     layoutMode: 'Packery',
-    |     gutter: 10
+    |	var $container = $('#container').imagesLoaded( function(){
+    |	$container.isotope({
+    |		 layoutMode: 'masonry',
+    |		 itemSelector: '.item'
     |		});
     |	});
     |	$('#filters').on( 'click', 'button', function() {
@@ -39,15 +37,13 @@ html(class="no-js" lang="")
     |		$container.isotope({ filter: filterValue });
     |	});
     |	$('.button-group').each( function( i, buttonGroup ) {
-    |	var $buttonGroup = $( buttonGroup );
+    |	  var $buttonGroup = $( buttonGroup );
     |	$buttonGroup.on( 'click', 'button', function() {
-    |	$buttonGroup.find('.is-checked').removeClass('is-checked');
-    |	$( this ).addClass('is-checked');
+    |	  $buttonGroup.find('.is-checked').removeClass('is-checked');
+    | 	$( this ).addClass('is-checked');
+    | 	});
     |	});
-    |	});
-    |	$(document).ready(function(){
-    |		$(".link").colorbox({iframe:true, innerWidth:"80%", innerHeight:"60%"});
-    |	});
+
 
 
 

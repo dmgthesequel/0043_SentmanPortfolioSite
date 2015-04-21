@@ -6,18 +6,19 @@
     <title>William Sentman Contact</title>
     <meta name="description" content="William Sentman Fine Art Oil Painting ">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/manifest.css" type="text/css" charset="utf-8">
+    <link rel="stylesheet" href="css/manifest.css" type="text/css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="js-dist/isotope.pkgd-dist.js"></script>
+    <script src="js-distimagesloaded.pkgd-dist.js"></script>
   </head>
   <body></body>
   <header>
-    <nav><a class="logo">
-        <p>logo</p></a>
+    <nav><a href="index.html" class="logo">William Sentman</a>
       <ul class="navlinks">
         <li> <a href="portfolio.html">portfolio</a></li>
         <li><a href="about.html">about the artist</a></li>
-        <li><a href="contact.html">contact</a></li><br class="clear">
-      </ul>
+        <li><a href="contact.html">contact</a></li>
+      </ul><br class="clear">
     </nav>
   </header>
   <div id="wufoo-mqo5ipd1id02lq"></div>
@@ -41,11 +42,10 @@
     })(document, 'script');
   </script>
   <script>
-    	var $container = $('#container').isotope();
-    	$container.imagesLoaded( function() {
-    		$container.isotope({
-    			itemSelector: '.item',
-    			layoutMode: 'packery'
+    	var $container = $('#container').imagesloaded( function(){
+    	$container.isotope({
+    		 layoutMode: 'masonry',
+    			itemSelector: '.item'
     		});
     	});
     	$('#filters').on( 'click', 'button', function() {
@@ -53,14 +53,11 @@
     		$container.isotope({ filter: filterValue });
     	});
     	$('.button-group').each( function( i, buttonGroup ) {
-    	var $buttonGroup = $( buttonGroup );
+    	  var $buttonGroup = $( buttonGroup );
     	$buttonGroup.on( 'click', 'button', function() {
-    	$buttonGroup.find('.is-checked').removeClass('is-checked');
+    	  $buttonGroup.find('.is-checked').removeClass('is-checked');
     	$( this ).addClass('is-checked');
     	});
-    	});
-    	$(document).ready(function(){
-    		$(".link").colorbox({iframe:true, innerWidth:"80%", innerHeight:"60%"});
     	});
   </script>
 </html>

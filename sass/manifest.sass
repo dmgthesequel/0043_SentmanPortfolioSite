@@ -2,20 +2,21 @@
 	margin: 0
 	padding: 0
 	box-sizing: border-box
-
+$accent-font: 'paulmaulregular', Helvetica, Arial, sans-serif
 $font-stack: Helvetica, Arial, sans-serif
-$primary-color: white
+$primary-color: rgba(255,255,255,.7)
+$dark-color: rgba(25,25,25,.7)
 $container: #595959
 $light-color: #B4B4B4
 
 body
 	font-family: $font-stack
-	font-weight: 300
 	color: $primary-color
-	text-align: center
 
 .clear
 	clear: both
 
 @import partials/_fonts
+@import partials/_nav
 @import partials/_video
+@import partials/_portfolio
